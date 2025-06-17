@@ -29,17 +29,30 @@ export function calculatePrice(
   selectedModules: number[],
   isYearly: boolean
 ) {
-  const basePrice = modules
+  // Giá cơ bản cho người dùng (125.000 đ/tháng/người)
+  const baseUserPrice = 125000 * userCount;
+  
+  // Giá của các modules được chọn
+  const modulesPrice = modules
     .filter((module) => selectedModules.includes(module.id))
     .reduce((sum, module) => sum + module.price, 0);
 
-  // Điều chỉnh giá Quản lý kho & sản xuất theo số lượng người dùng (giảm dần)
-  let adjustedPrice = basePrice;
+  // Tổng giá = giá cơ bản + giá modules
+  let totalPrice = baseUserPrice + modulesPrice;
+
+  // Điều chỉnh giá Quản lý kho & sản xuất theo số lượng người dùng (nếu có)
   if (selectedModules.some((id: number) => [9, 10, 11, 12, 13].includes(id))) {
-    adjustedPrice = Math.max(1920000 / 10 * userCount, 297000 * userCount); // Giá tối thiểu 297.000 đ/người
+    const warehousePrice = Math.max(1920000 / 10 * userCount, 297000 * userCount);
+    // Thay thế giá modules kho bằng giá điều chỉnh
+    const warehouseModulesPrice = modules
+      .filter((module) => selectedModules.includes(module.id) && [9, 10, 11, 12, 13].includes(module.id))
+      .reduce((sum, module) => sum + module.price, 0);
+    
+    totalPrice = baseUserPrice + (modulesPrice - warehouseModulesPrice) + warehousePrice;
   }
 
   // Giảm giá 10% nếu chọn hàng năm
   const discount = isYearly ? 0.9 : 1;
-  return Math.round(adjustedPrice * discount);
+  
+  return Math.round(totalPrice * discount);
 }

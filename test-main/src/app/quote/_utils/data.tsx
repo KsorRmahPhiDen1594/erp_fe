@@ -36,8 +36,8 @@ export const modules = [
   { id: 25, name: 'Tuyển dụng', price: 198000, category: 'Dịch vụ', icon: '/images/quote/hotro.png' },
 
   // Tích hợp
-  { id: 26, name: 'viettel S-Invoice', price: 198000, category: 'Tích hợp', icon: '/images/quote/viettel.png' },
-  { id: 27, name: 'Tổng đài VoIP', price: 198000, category: 'Tích hợp', icon: '/images/quote/tongdai.jpg' },
+  { id: 26, name: 'viettel S-Invoice', price: 297000, category: 'Tích hợp', icon: '/images/quote/viettel.png' },
+  { id: 27, name: 'Tổng đài VoIP', price: 297000, category: 'Tích hợp', icon: '/images/quote/tongdai.jpg' },
   { id: 28, name: 'Grap Mart', price: 198000, category: 'Tích hợp', icon: '/images/quote/grap.jpg' },
   { id: 29, name: 'Nhất Tín', price: 198000, category: 'Tích hợp', icon: '/images/quote/nhattin.png' },
   { id: 30, name: 'Giao hàng tiếp kiệm', price: 198000, category: 'Tích hợp', icon: '/images/quote/giaohangtiepkiem.png' },

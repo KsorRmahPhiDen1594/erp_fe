@@ -8,7 +8,8 @@ import UserCountSelector from './_components/user-count-selector';
 import ModulesSelection from './_components/modules-selection';
 import AdditionalServicesTable from './_components/additional-services-table';
 import PricingSummary from './_components/pricing-summary';
-import FAQSection from './_components/faq-section';  // ← 🆕 Thêm import
+import FAQSection from './_components/faq-section';
+import QuoteFooter from '@/app/quote/_components/qupte-footer';
 
 export default function QuotePage() {
   const [userCount, setUserCount] = useState(10);
@@ -26,10 +27,9 @@ export default function QuotePage() {
         const tableRect = tableRef.current.getBoundingClientRect();
         const pricingRect = pricingRef.current.getBoundingClientRect();
 
-        // Khi phần bảng giá chạm đầu "Bảng giá dịch vụ bổ sung", bật sticky
         if (tableRect.top <= pricingRect.bottom + 20 && tableRect.top >= 0) {
           pricingRef.current.style.position = 'sticky';
-          pricingRef.current.style.top = '20px'; // Cách đầu 20px
+          pricingRef.current.style.top = '20px';
         } else {
           pricingRef.current.style.position = 'relative';
           pricingRef.current.style.top = 'auto';
@@ -76,11 +76,14 @@ export default function QuotePage() {
           <AdditionalServicesTable ref={tableRef} />
         </div>
 
-        {/* 🆕 Thêm FAQ Section */}
+        {/* FAQ Section */}
         <div className="mt-16 py-8 border-t border-gray-200">
           <FAQSection />
         </div>
       </div>
+
+      {/* Footer - Đặt ngoài container để full width */}
+      <QuoteFooter />
     </>
   );
 }

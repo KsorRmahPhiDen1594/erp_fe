@@ -8,6 +8,7 @@ import UserCountSelector from './_components/user-count-selector';
 import ModulesSelection from './_components/modules-selection';
 import AdditionalServicesTable from './_components/additional-services-table';
 import PricingSummary from './_components/pricing-summary';
+import FAQSection from './_components/faq-section';  // ← 🆕 Thêm import
 
 export default function QuotePage() {
   const [userCount, setUserCount] = useState(10);
@@ -50,18 +51,17 @@ export default function QuotePage() {
       <QuoteHeader />
       
       <div className="container mx-auto p-4">
-        <UserCountSelector 
-          userCount={userCount} 
-          setUserCount={setUserCount} 
+        <UserCountSelector
+          userCount={userCount}
+          setUserCount={setUserCount}
         />
-
+        
         <div className="relative">
           <div className="flex gap-6">
-            <ModulesSelection 
+            <ModulesSelection
               selectedModules={selectedModules}
               setSelectedModules={setSelectedModules}
             />
-
             <PricingSummary
               ref={pricingRef}
               userCount={userCount}
@@ -75,8 +75,12 @@ export default function QuotePage() {
           
           <AdditionalServicesTable ref={tableRef} />
         </div>
+
+        {/* 🆕 Thêm FAQ Section */}
+        <div className="mt-16 py-8 border-t border-gray-200">
+          <FAQSection />
+        </div>
       </div>
     </>
   );
 }
-

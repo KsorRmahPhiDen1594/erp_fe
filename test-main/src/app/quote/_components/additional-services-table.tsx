@@ -38,6 +38,11 @@ const AdditionalServicesTable = forwardRef<HTMLDivElement>((props, ref) => {
           </tbody>
         </table>
       </div>
+      <p className='mt-8 text-center'>
+        *** Miễn phí chi phí ăn ở, di chuyển với các doanh nghiệp trong phạm vi 20km tính từ văn phòng IZISolution
+        <br/>*** Giảm giá 10% khi đăng ký 2 năm
+        <br/>*** Giảm giá 20% khi đăng ký 3 năm
+       </p>
     </div>
   );
 });
